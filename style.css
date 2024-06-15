@@ -15,7 +15,7 @@
 }
 
 .list-group-item.btn-warning {
-    background-color: rgba(255, 251, 0, 0.451) !important;
+    background-color: rgba(255, 252, 83, 0.85) !important;
     color: black; /* Ensure text is visible on yellow background */
 }
 
