@@ -43,62 +43,78 @@ const radioSymptoms = [
 radioSymptoms.forEach(rSymptom => {
     const listItem = document.createElement("li");
     listItem.classList.add("list-group-item");
-    listItem.classList.add("btn")
-    listItem.classList.add("btn-warning")
+    //listItem.classList.add("btn")
+    //listItem.classList.add("btn-warning")
     listItem.classList.add("text-start")
+    listItem.classList.add("bg-light");
+
 
 
     // Radio button group
     const radioGroup = document.createElement("div");
     radioGroup.classList.add("radio-group");
-    radioGroup.classList.add("form-check");
+    radioGroup.classList.add("my-1");
+    //radioGroup.classList.add("form-check");
 
+    const options = ["R", "G", "Y"];
 
+const colorMap = { 
+    "R": "btn-outline-danger",
+    "G": "btn-outline-success",
+    "Y": "btn-outline-warning"
+};
 
-    const options = ["Red", "Green", "Yellow"];
-    options.forEach((option, _index) => {
-        const radioInput = document.createElement("input");
-        radioInput.type = "radio";
-        radioInput.name = rSymptom; 
-        radioInput.id = `${rSymptom}-${option}`;
-        radioInput.value = option.toLowerCase();
+options.forEach((option, index) => {
+    const radioInput = document.createElement("input");
+    radioInput.type = "radio";
+    radioInput.name = rSymptom; 
+    radioInput.id = `${rSymptom}-${option}`;
+    radioInput.value = option.toLowerCase();
+    radioInput.autocomplete = "off";
+    radioInput.classList.add("mx-2"); // For spacing
+    radioInput.classList.add("btn-check"); // For spacing
+    radioGroup.appendChild(radioInput);
 
-        // For Styling
-        radioInput.classList.add("form-check-inpput");
-        radioInput.classList.add("mx-1");
-
-        const radioLabel = document.createElement("label");
-        radioLabel.htmlFor = `${rSymptom}-${option}`;
-        radioLabel.textContent = option;
-        radioLabel.classList.add("form-check-label")
-
-        radioGroup.appendChild(radioLabel);
-        radioGroup.appendChild(radioInput);
+    const radioSpan = document.createElement("span"); // Create a span for the label
+    radioSpan.textContent = option;
+    radioSpan.classList.add("btn", colorMap[option], "mx-1"); // Apply styles to the span
+    radioSpan.addEventListener("click", () => { 
+        radioInput.checked = true; // Manually check the associated radio button
     });
+
+    radioGroup.appendChild(radioSpan);
+});
 
     // Symptom text
     const symptomText = document.createElement("div");
     symptomText.textContent = rSymptom;
 
+
     // Append elements to list item
     listItem.appendChild(symptomText);
     listItem.appendChild(radioGroup);
     radioDispositionList.appendChild(listItem); // Replace 'radioSymptoms' with 'radioDispositionList'
-
+    /*
     // Event listener for radio button changes
     radioGroup.addEventListener("change", (event) => {
-        listItem.classList.remove("btn-danger", "btn-success"); // Clear previous styles
+        const target = event.target;
+        if (!target.classList.contains("btn-check")) return; // Check if it's a radio input
 
-        if (event.target.value === "red") {
+        listItem.classList.remove("btn-danger", "btn-success", "btn-warning"); // Clear previous styles
+
+        const listItem = target.closest(".list-group-item"); // Find parent list item
+        if (!listItem) return; // Safety check
+
+        if (event.target.value === "R") {
             listItem.classList.add("btn-danger");
             listItem.classList.remove("btn-warning");
-        } else if (event.target.value === "green") {
+        } else if (event.target.value === "G") {
             listItem.classList.add("btn-success");
             listItem.classList.remove("btn-warning");
         } else {
             listItem.classList.add("btn-warning");
         }
 
-    });
+    });*/
 });
 
