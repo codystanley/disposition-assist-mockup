@@ -1,0 +1,20 @@
+/* Keep existing red and green classes */
+
+.list-group-item { 
+    background-color: lightgray; /* Default color using Bootstrap's list-group-item */
+  }
+  
+.list-group-item.btn-danger {
+    background-color: red !important;
+    color: white; /* Ensure text is visible on red background */
+}
+  
+.list-group-item.btn-success {
+    background-color: green !important;
+    color: white; /* Ensure text is visible on green background */
+}
+
+.list-group-item.btn-warning {
+    background-color: yellow !important;
+    color: black; /* Ensure text is visible on yellow background */
+}
