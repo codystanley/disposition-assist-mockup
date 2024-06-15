@@ -45,11 +45,15 @@ radioSymptoms.forEach(rSymptom => {
     listItem.classList.add("list-group-item");
     listItem.classList.add("btn")
     listItem.classList.add("btn-warning")
+    listItem.classList.add("text-start")
+
 
     // Radio button group
     const radioGroup = document.createElement("div");
     radioGroup.classList.add("radio-group");
     radioGroup.classList.add("form-check");
+
+
 
     const options = ["Red", "Green", "Yellow"];
     options.forEach((option, _index) => {
@@ -61,18 +65,19 @@ radioSymptoms.forEach(rSymptom => {
 
         // For Styling
         radioInput.classList.add("form-check-inpput");
+        radioInput.classList.add("mx-1");
 
         const radioLabel = document.createElement("label");
         radioLabel.htmlFor = `${rSymptom}-${option}`;
         radioLabel.textContent = option;
-        radioLabel.classList.add("form-check-label") // for bootstrap styling
+        radioLabel.classList.add("form-check-label")
 
         radioGroup.appendChild(radioLabel);
         radioGroup.appendChild(radioInput);
     });
 
     // Symptom text
-    const symptomText = document.createElement("span");
+    const symptomText = document.createElement("div");
     symptomText.textContent = rSymptom;
 
     // Append elements to list item

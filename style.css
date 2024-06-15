@@ -18,12 +18,3 @@
     background-color: rgba(255, 252, 83, 0.85) !important;
     color: black; /* Ensure text is visible on yellow background */
 }
-
-.radio-list-group-item {
-    display: flex; /* Arrange radio buttons and symptom text horizontally
-    align-items: center; /* Vertically center the items */
-  }
-  
-.radio-list-group-item .radio-group {
-    margin-right: 15px; /* Add some space between radio buttons and text */
-}
