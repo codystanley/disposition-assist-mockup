@@ -8,6 +8,10 @@ h3 {
     color: #0968b8
 }
 
+h5 {
+    color: #083b82;
+}
+
 .list-group-item { 
     background-color: lightgray; /* Default color using Bootstrap's list-group-item */
   }
