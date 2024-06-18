@@ -26,3 +26,21 @@ h3 {
     background-color: #ffdb85 !important;
     color: black; /* Ensure text is visible on yellow background */
 }
+
+/* Style the list items */
+#clickDispositionList .list-group-item {
+    display: flex; /* Make list item a flex container */
+    align-items: center; /* Vertically center items within the list item */
+    width: 100%; /* Make list items full width */
+    justify-content: space-between; /* Push button to the right */
+}
+
+/* Style the warning button */
+#clickDispositionList .btn-danger {
+    margin-left: auto; /* Push button to the right */
+}
+
+/* Optional: Add some padding to the list items */
+#clickDispositionList .list-group-item {
+    padding: 0.5rem 1rem; /* Adjust values as needed */
+}
