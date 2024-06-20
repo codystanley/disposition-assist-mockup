@@ -4,12 +4,14 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-h3 {
+h2 {
     color: #0968b8
 }
 
-h5 {
-    color: #083b82;
+.methodHeader {
+    background-color: #083b82;
+    color: #ffffff;
+    padding: 0.5rem 0.5rem;
 }
 
 .list-group-item { 
