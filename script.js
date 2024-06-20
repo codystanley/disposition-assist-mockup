@@ -4,8 +4,6 @@
 
 const clickDispositionList = document.getElementById("clickDispositionList");
 
-const toggleButton = document.getElementById("m1AllGreen");
-
 const clickSymptoms = [
     "[1] Coughed up blood AND [2] more than blood-tinged sputum",
     "Retractions - skin between the ribs is pulling in (sinking in) with each breath (includes suprasternal retractions)",
@@ -66,24 +64,77 @@ clickSymptoms.forEach(symptom => {
             item.classList.replace("btn-success", "btn-danger");
         }
     }
+});
 
-    // Toggle button event listener
-    toggleButton.addEventListener("change", () => {
-        const isAllGreen = toggleButton.checked;
+/* -------- */
+/* Method 2 */
+/* -------- */
 
-        const listItems = clickDispositionList.querySelectorAll(".list-group-item");
-        listItems.forEach(item => {
-            if (isAllGreen) {
-                if (!item.classList.contains("btn-danger")) {
-                    item.classList.remove("btn-warning");
-                    item.classList.add("btn-success");
-                }
-            } else {
-                if (!item.classList.contains("btn-danger")) {
-                    item.classList.remove("btn-success");
-                    item.classList.add("btn-warning");
-                }
-            }
-        });
+const buttonDispositionList = document.getElementById("buttonDispositionList");
+
+const buttonSymptoms = [
+    "[1] Coughed up blood AND [2] more than blood-tinged sputum",
+    "Retractions - skin between the ribs is pulling in (sinking in) with each breath (includes suprasternal retractions)",
+    "Stridor (harsh sound with breathing in) is present",
+    "[1] Lips or face have turned bluish BUT [2] only during coughing fits",
+    "[1] Age < 12 weeks AND [2] fever 100.4 F (38.0 C) or higher by any route (Note: Preference is to confirm with rectal temperature)"
+];
+
+buttonSymptoms.forEach(symptom => {
+
+    // Create a list item for each symptom
+    const btnListItem = document.createElement("li");
+    btnListItem.textContent = symptom;
+    btnListItem.classList.add("list-group-item", "btn", "btn-warning", "text-start", "d-flex", "align-items-center", "w-100");
+    
+    // Create danger button
+    const dangerButton = document.createElement("button");
+    dangerButton.textContent = "R";
+    dangerButton.classList.add("btn", "btn-danger", "ms-2");
+
+    // Create  button
+    const successButton = document.createElement("button");
+    successButton.textContent = "G";
+    successButton.classList.add("btn", "btn-success", "ms-2");
+
+    // Create a flex container for layout
+    const container = document.createElement("div");
+    container.classList.add("d-flex", "align-items-center", "w-100");
+
+    // Append elements to container
+    container.appendChild(btnListItem); 
+    container.appendChild(dangerButton);
+    container.appendChild(successButton);
+
+    // Append container to the list
+    buttonDispositionList.appendChild(container);
+
+    // Click listeners for danger & success button
+
+    dangerButton.addEventListener("click", () => {
+        setListItemToRed(btnListItem);
     });
+
+    successButton.addEventListener("click", () => {
+        setListItemToGreen(btnListItem);
+    });
+
+    // Function to set list item to red
+    function setListItemToRed(item) {
+        if (item.classList.contains("btn-danger")) {
+            item.classList.replace("btn-danger", "btn-warning");
+        } else {
+            item.classList.replace("btn-warning", "btn-danger");
+            item.classList.replace("btn-success", "btn-danger");
+        }
+    }
+
+    function setListItemToGreen(item) {
+        if (item.classList.contains("btn-success")) {
+            item.classList.replace("btn-success", "btn-warning");
+        } else {
+            item.classList.replace("btn-warning", "btn-success");
+            item.classList.replace("btn-danger", "btn-success");
+        }
+    }
 });
