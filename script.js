@@ -138,3 +138,53 @@ buttonSymptoms.forEach(symptom => {
         }
     }
 });
+
+/* -------- */
+/* Method 3 */
+/* -------- */
+
+const clicksDispositionList = document.getElementById("clicksDispositionList");
+
+const clicksSymptoms = [
+    "[1] Coughed up blood AND [2] more than blood-tinged sputum",
+    "Retractions - skin between the ribs is pulling in (sinking in) with each breath (includes suprasternal retractions)",
+    "Stridor (harsh sound with breathing in) is present",
+    "[1] Lips or face have turned bluish BUT [2] only during coughing fits",
+    "[1] Age < 12 weeks AND [2] fever 100.4 F (38.0 C) or higher by any route (Note: Preference is to confirm with rectal temperature)"
+];
+
+clicksSymptoms.forEach(symptom => {
+
+    // Create a list item for each symptom
+    const clicksListItem = document.createElement("li");
+    clicksListItem.textContent = symptom;
+    clicksListItem.classList.add("list-group-item", "btn", "btn-warning", "text-start", "d-flex", "align-items-center", "w-100");
+
+    // Create a flex container for layout
+    const clicksContainer = document.createElement("div");
+    clicksContainer.classList.add("d-flex", "align-items-center", "w-100");
+
+    // Append elements to container
+    clicksContainer.appendChild(clicksListItem); 
+
+    // Append container to the list
+    clicksDispositionList.appendChild(clicksContainer);
+
+     // Click listeners for list item
+     clicksListItem.addEventListener("click", () => {
+        cycleListItemColor(clicksListItem); 
+    });
+
+    // Function to cycle list item color (warning -> success -> warning)
+    function cycleListItemColor(item) {
+        if (item.classList.contains("btn-warning")) {
+            item.classList.replace("btn-warning", "btn-success");
+        } else if (item.classList.contains("btn-success")) {
+            item.classList.replace("btn-success", "btn-danger");
+        } else if (item.classList.contains("btn-danger")) {
+            item.classList.replace("btn-danger", "btn-warning");
+        } else {
+            return;
+        }
+    }
+});
